@@ -1,8 +1,8 @@
 package ar.edu.unahur.obj2.practicaparcial1.Criterios;
 
-import ar.edu.unahur.obj2.practicaparcial1.Receta;
+import ar.edu.unahur.obj2.practicaparcial1.Recetas.Receta;
 
-public class AltoValorNutri implements ICriterio{
+public class AltoValorNutri implements CriterioPref{
     private Double calorias;
 
     public AltoValorNutri(Double caloriasInicial){ 
@@ -10,8 +10,8 @@ public class AltoValorNutri implements ICriterio{
     }
 
     @Override
-    public Boolean criterio(Receta receta) {
-        return receta.getValorNutricional() >= calorias;
+    public Boolean leGusta(Receta receta) {
+        return receta.getValorNutricional() > calorias;
     }
 
     public Double getCalorias(){
