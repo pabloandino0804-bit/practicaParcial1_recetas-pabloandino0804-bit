@@ -1,19 +1,19 @@
 package ar.edu.unahur.obj2.practicaparcial1.Criterios;
 
-import java.util.Set;
+import java.util.List;
 
 import ar.edu.unahur.obj2.practicaparcial1.Recetas.Receta;
 
 public class Premium implements CriterioPref{
-    private Set<String> autoresPreferidos;
+    private List<String> autoresPreferidos;
     
-    public Premium(Set<String> autoresPreferidos) {
+    public Premium(List<String> autoresPreferidos) {
         this.autoresPreferidos = autoresPreferidos;
     }
 
     @Override
     public Boolean leGusta(Receta receta) {
-        return autoresPreferidos.contains(receta.getNombre());
+        return autoresPreferidos.contains(receta.getNombreAutor());
     }
 
 }

@@ -3,9 +3,9 @@ package ar.edu.unahur.obj2.practicaparcial1.Criterios;
 import ar.edu.unahur.obj2.practicaparcial1.Recetas.Receta;
 
 public class AltoValorNutri implements CriterioPref{
-    private Double calorias;
+    private Integer calorias;
 
-    public AltoValorNutri(Double caloriasInicial){ 
+    public AltoValorNutri(Integer caloriasInicial){ 
         this.calorias = caloriasInicial;
     }
 
@@ -14,7 +14,7 @@ public class AltoValorNutri implements CriterioPref{
         return receta.getValorNutricional() > calorias;
     }
 
-    public Double getCalorias(){
+    public Integer getCalorias(){
         return calorias;
     }
 

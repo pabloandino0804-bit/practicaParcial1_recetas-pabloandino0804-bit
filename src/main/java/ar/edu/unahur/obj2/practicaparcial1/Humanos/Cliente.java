@@ -1,5 +1,6 @@
 package ar.edu.unahur.obj2.practicaparcial1.Humanos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.unahur.obj2.practicaparcial1.Criterios.ComeTutti;
@@ -9,12 +10,11 @@ import ar.edu.unahur.obj2.practicaparcial1.Recetas.Receta;
 public class Cliente {
     private String dni;
     private CriterioPref criterio;
-    private List<Receta> recetasRecibidas;
+    private List<Receta> recetasRecibidas = new ArrayList<Receta>();
 
-    public Cliente (String dni, CriterioPref criterio, List<Receta> recetasRecibidas) {
+    public Cliente (String dni, CriterioPref criterio) {
         this.dni = dni;
         this.criterio = new ComeTutti();
-        this.recetasRecibidas = recetasRecibidas;
     }
 
     public String getDNI() {
@@ -25,7 +25,7 @@ public class Cliente {
         return criterio;
     }
 
-    public Boolean loSatiface(Receta unaReceta) {
+    public Boolean leGustaReceta(Receta unaReceta) {
         return this.criterio.leGusta(unaReceta);
     }
 
