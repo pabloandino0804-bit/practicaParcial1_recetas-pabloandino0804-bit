@@ -1,13 +1,18 @@
 package ar.edu.unahur.obj2.practicaparcial1.Recetas;
 
-public abstract class RodajasPalta extends IngredienteAdicionalDecorator {
+public class RodajasPalta extends IngredienteAdicionalDecorator {
 
     public RodajasPalta(Receta recetaBase) {
         super(recetaBase);
     }
 
     @Override
-    public Integer getValorNutricional() {
-        return recetaBase.getValorNutricional() + 160;
+    protected String doGetNombre() {
+        return "Rodajas de palta";
+    }
+
+    @Override
+    protected Integer doGetValorNutricional() {
+        return 160;
     }
 }

@@ -29,7 +29,8 @@ public class ClienteTest {
     }
 
     @Test
-    void test() {
+    @DisplayName("Que devuelva true cuando le consulta al cliente si le gusta la receta dependiendo su criterio")
+    void testCriterio() {
         CriterioPref criterio = new ComeTutti();
         Cliente cliente = new Cliente("1234", criterio);
         assertTrue(cliente.leGustaReceta(receta));

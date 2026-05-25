@@ -8,9 +8,8 @@ import ar.edu.unahur.obj2.practicaparcial1.Recetas.RecetaBase;
 
 public class Nutricionista {
     private static Nutricionista instance = new Nutricionista();
-    
-    private String nombre;
     private List<Receta> recetasDisponibles = new ArrayList<>();
+    private String nombre = "Pablo";
 
     public Nutricionista() {}
 
@@ -22,6 +21,10 @@ public class Nutricionista {
         return nombre;
     }
 
+    public void setNombre(String unNombre) {
+        this.nombre = unNombre;
+    }
+
     public List<Receta> getRecetasDisponibles() {
         return recetasDisponibles;
     }
@@ -31,13 +34,7 @@ public class Nutricionista {
     }
 
     public void visitarAUnCliente(Cliente cliente) {
-        Receta receta = this.recetasDisponibles.stream().findFirst().get();
-        
-        if (cliente.leGustaReceta(receta)) {
-            cliente.recibirReceta(receta);
-        }
-        else {
-            cliente.recibirReceta(new RecetaBase("batido magico", this.getNombre(), 2000, 0));
-        }
+        Receta recetaAEntregar = recetasDisponibles.stream().filter(r -> cliente.leGustaReceta(r)).findFirst().orElse(new RecetaBase("batido magico", this.getNombre(), 2000, 0));
+        cliente.recibirReceta(recetaAEntregar);
     }
 }

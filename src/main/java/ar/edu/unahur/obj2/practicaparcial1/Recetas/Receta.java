@@ -9,7 +9,7 @@ public interface Receta {
 
     public Integer getValorNutricional();
 
-    public void setValorNutricional(Integer valirNutricional);
+    public void setValorNutricional(Integer valorNutricional);
 
     public Integer getAniosTradicion();
 
