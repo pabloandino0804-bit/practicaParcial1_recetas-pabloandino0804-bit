@@ -34,7 +34,12 @@ public class Nutricionista {
     }
 
     public void visitarAUnCliente(Cliente cliente) {
-        Receta recetaAEntregar = recetasDisponibles.stream().filter(r -> cliente.leGustaReceta(r)).findFirst().orElse(new RecetaBase("batido magico", this.getNombre(), 2000, 0));
+        Receta recetaAEntregar = recetasDisponibles.stream()
+        .filter(r -> cliente.leGustaReceta(r))
+        .findFirst()
+        .orElse(
+            new RecetaBase("batido magico", nombre, 2000, 0)
+        );
         cliente.recibirReceta(recetaAEntregar);
     }
 }

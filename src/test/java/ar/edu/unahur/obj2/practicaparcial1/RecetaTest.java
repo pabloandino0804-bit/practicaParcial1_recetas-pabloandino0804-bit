@@ -9,13 +9,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unahur.obj2.practicaparcial1.Recetas.FrutosSecos;
+import ar.edu.unahur.obj2.practicaparcial1.Recetas.IngredienteAdicionalDecorator;
 import ar.edu.unahur.obj2.practicaparcial1.Recetas.SemillasDeChia;
 import ar.edu.unahur.obj2.practicaparcial1.Recetas.RodajasPalta;
 import ar.edu.unahur.obj2.practicaparcial1.Recetas.Receta;
 import ar.edu.unahur.obj2.practicaparcial1.Recetas.RecetaBase;
 
 public class RecetaTest {
-    private Receta receta;
+    private RecetaBase receta;
 
     @BeforeEach
     void setup() {
@@ -39,7 +40,7 @@ public class RecetaTest {
     }
 
     @Test
-    void nutricionTest() {
+    void SUValorNutricionalCambiaA3570() {
         receta.setValorNutricional(3570);
         assertEquals(receta.getValorNutricional(), 3570);
     }
@@ -57,28 +58,28 @@ public class RecetaTest {
 
     @Test
     void daoUnaRecetaDecorator_alCambiarElNombreDelAutor_SeGUardaraElNombreCambiado() {
-        Receta recetaAdicional = new FrutosSecos(receta);
+        IngredienteAdicionalDecorator recetaAdicional = new FrutosSecos(receta);
         recetaAdicional.setAutor("Lucia Fernandez");
         assertEquals(recetaAdicional.getNombreAutor(), "Lucia Fernandez");
     }
 
     @Test
     void dadoUnaRecetaDecorator_esTradicionalSiTieneAlMenos_20AñosDeTradicion() {
-        Receta recetaAdicional = new FrutosSecos(receta);
+        IngredienteAdicionalDecorator recetaAdicional = new FrutosSecos(receta);
         assertTrue(recetaAdicional.esTradicional());
         assertEquals(recetaAdicional.getAniosTradicion(), 45);
     }
 
     @Test 
     void dadoUnaRecetaConValor3570EnNutri_LeAgregaSemillasDeChiaComoIngredienteAdicional_MinetrasSeMantegaLaRecetaOriginalConAdicionDe490() {
-        Receta recetaSemillas = new SemillasDeChia(receta);
+        IngredienteAdicionalDecorator recetaSemillas = new SemillasDeChia(receta);
         recetaSemillas.setValorNutricional(3570);
         assertEquals(recetaSemillas.getValorNutricional(), 4060);
     }
 
     @Test
-    void dadoUnaRecetaConSemillasDeChia_CuandoDescribeSuNombreLeApareceConSemmilasDeChia() {
-        Receta recetaSemillas = new SemillasDeChia(receta);
+    void dadoUnaRecetaConSemillasDeChia_CuandoDescribeSuNombreLeApareceConElNombre_SemillasDeChia() {
+        IngredienteAdicionalDecorator recetaSemillas = new SemillasDeChia(receta);
         assertEquals(recetaSemillas.getNombre(), receta.getNombre() + "con" + "Semillas de chia");
     }
 
@@ -89,7 +90,7 @@ public class RecetaTest {
     }
 
     @Test
-    void dadoUnaRecetaConPalta_CuandoDescribeSuNombreLeApareceConRodajasDePalta() {
+    void dadoUnaRecetaConPalta_CuandoDescribeSuNombreLeApareceConElNombre_RodajasDePalta() {
         Receta recetaPalta = new RodajasPalta(receta);
         assertEquals(recetaPalta.getNombre(), receta.getNombre() + "con" + "Rodajas de palta");
     }
@@ -101,8 +102,15 @@ public class RecetaTest {
     }
 
     @Test
-    void dadoUnaReceta_() {
+    void dadoUnaRecetaConFrutosSecos_CuandoDescribeSuNombreLeApareceConElNombre_FrutosSecos() {
         Receta recetaFrutosSecos = new FrutosSecos(receta);
         assertEquals(recetaFrutosSecos.getNombre(), receta.getNombre() + "con" + "Frutos secos");
+    }
+
+    @Test
+    void dadoUnaReceta_AlRecibirUnIngredietneSeGurdaraEnSuLista() {
+        IngredienteAdicionalDecorator ingredienteSemillas = new SemillasDeChia(receta = new RecetaBase("Locro", "yo mismo", 4300, 50));
+        receta.recibirIngrediente(ingredienteSemillas);
+        assertTrue(receta.getIngredientes().contains(ingredienteSemillas));
     }
 }

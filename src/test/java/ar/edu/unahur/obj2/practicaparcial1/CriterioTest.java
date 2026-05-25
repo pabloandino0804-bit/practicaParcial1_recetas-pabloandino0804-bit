@@ -32,9 +32,11 @@ public class CriterioTest {
     }
 
     @Test
-    void testCriterio_AltoValorNutricional() {
+    void satifateceElCriterioSiLaRecetaTieneAltoValorNutritivoASusCalorias() {
+        RecetaBase receta2 = new RecetaBase("Hamburgesa Criolla Con Queso", "rodriguez dario", 250, 45);
         CriterioPref criterio = new AltoValorNutri(2350);
         assertTrue(criterio.leGusta(receta));
+        assertTrue(!criterio.leGusta(receta2));
     }
 
     @Test

@@ -13,9 +13,4 @@ public class AltoValorNutri implements CriterioPref{
     public Boolean leGusta(Receta receta) {
         return receta.getValorNutricional() > calorias;
     }
-
-    public Integer getCalorias(){
-        return calorias;
-    }
-
 }
