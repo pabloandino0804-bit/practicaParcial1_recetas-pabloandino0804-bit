@@ -1,15 +1,10 @@
 package ar.edu.unahur.obj2.practicaparcial1.Recetas;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RecetaBase implements Receta{
     private String nombre;
     private String autor;
     private Integer valorNutricional;
     private Integer añosDeTradicion;
-
-    private List<IngredienteAdicionalDecorator> ingredientes = new ArrayList<>();
 
     public RecetaBase(String nombre, String autor, Integer valorNutricional, Integer añosDeTradicion) {
         this.nombre = nombre; 
@@ -51,9 +46,5 @@ public class RecetaBase implements Receta{
     @Override
     public Boolean esTradicional() {
         return añosDeTradicion >= 20;
-    }
-
-    public List<IngredienteAdicionalDecorator> getIngredientes() {
-        return ingredientes;
     }
 }

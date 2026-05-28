@@ -29,8 +29,6 @@ public class NutricionistaTest {
         Receta miReceta = new RecetaBase("Sopa de espinaca", "Yo Mismo", 2500, 50);
 
         nutricionista2.agregarReceta(miReceta);
-        
-        
 
         Nutricionista nutri = Nutricionista.getInstance();
 
@@ -50,13 +48,14 @@ public class NutricionistaTest {
     void alVisitarDebeCrearBatidoMagigo() {
         Nutricionista nutri = Nutricionista.getInstance();
 
-        Cliente cliente = new Cliente("1234564", new AltoValorNutri(5000));
+        Cliente cliente2 = new Cliente("1234564", new AltoValorNutri(5000));
         
-        nutri.visitarAUnCliente(cliente);
+        nutri.visitarAUnCliente(cliente2);
         
-        Receta recetaCliente = cliente.getRecetasRecibidas().get(0);
+        Receta recetaCliente = cliente2.getRecetasRecibidas().get(0);
         
-        assertTrue(cliente.getRecetasRecibidas().contains(recetaCliente));
+        assertTrue(cliente2.getRecetasRecibidas().contains(recetaCliente));
         assertEquals("batido magico", recetaCliente.getNombre());
+        assertEquals(2000, recetaCliente.getValorNutricional());
     }
 }
