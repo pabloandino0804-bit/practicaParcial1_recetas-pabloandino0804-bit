@@ -56,8 +56,4 @@ public class RecetaBase implements Receta{
     public List<IngredienteAdicionalDecorator> getIngredientes() {
         return ingredientes;
     }
-
-    public void recibirIngrediente(IngredienteAdicionalDecorator ingrediente) {
-        this.ingredientes.add(ingrediente);
-    }
 }

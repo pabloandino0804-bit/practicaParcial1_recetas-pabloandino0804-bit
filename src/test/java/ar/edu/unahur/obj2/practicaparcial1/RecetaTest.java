@@ -106,11 +106,4 @@ public class RecetaTest {
         Receta recetaFrutosSecos = new FrutosSecos(receta);
         assertEquals(recetaFrutosSecos.getNombre(), receta.getNombre() + "con" + "Frutos secos");
     }
-
-    @Test
-    void dadoUnaReceta_AlRecibirUnIngredietneSeGurdaraEnSuLista() {
-        IngredienteAdicionalDecorator ingredienteSemillas = new SemillasDeChia(receta = new RecetaBase("Locro", "yo mismo", 4300, 50));
-        receta.recibirIngrediente(ingredienteSemillas);
-        assertTrue(receta.getIngredientes().contains(ingredienteSemillas));
-    }
 }

@@ -8,11 +8,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import ar.edu.unahur.obj2.practicaparcial1.Criterios.ComeTutti;
-import ar.edu.unahur.obj2.practicaparcial1.Criterios.CriterioPref;
-import ar.edu.unahur.obj2.practicaparcial1.Criterios.RecetaTradicional;
-import ar.edu.unahur.obj2.practicaparcial1.Humanos.Cliente;
 import ar.edu.unahur.obj2.practicaparcial1.Recetas.RecetaBase;
+import ar.edu.unahur.obj2.practicaparcial1.clientes.Cliente;
+import ar.edu.unahur.obj2.practicaparcial1.clientes.Criterios.ComeTutti;
+import ar.edu.unahur.obj2.practicaparcial1.clientes.Criterios.CriterioPref;
+import ar.edu.unahur.obj2.practicaparcial1.clientes.Criterios.RecetaTradicional;
 
 public class ClienteTest {
     private RecetaBase receta;

@@ -5,6 +5,7 @@ import java.util.List;
 
 import ar.edu.unahur.obj2.practicaparcial1.Recetas.Receta;
 import ar.edu.unahur.obj2.practicaparcial1.Recetas.RecetaBase;
+import ar.edu.unahur.obj2.practicaparcial1.clientes.Cliente;
 
 public class Nutricionista {
     private static Nutricionista instance = new Nutricionista();
@@ -30,16 +31,21 @@ public class Nutricionista {
     }
 
     public void agregarReceta(Receta unaReceta) {
-        this.recetasDisponibles.add(unaReceta);
+        recetasDisponibles.add(unaReceta);
     }
 
     public void visitarAUnCliente(Cliente cliente) {
-        Receta recetaAEntregar = recetasDisponibles.stream()
+        Receta recetaObtenida = recetasDisponibles.stream()
         .filter(r -> cliente.leGustaReceta(r))
         .findFirst()
         .orElse(
             new RecetaBase("batido magico", nombre, 2000, 0)
         );
+
+        recetasDisponibles.remove(recetaObtenida);
+
+        Receta recetaAEntregar = cliente.personalizarReceta(recetaObtenida);
+
         cliente.recibirReceta(recetaAEntregar);
     }
 }

@@ -1,11 +1,11 @@
-package ar.edu.unahur.obj2.practicaparcial1.Humanos;
+package ar.edu.unahur.obj2.practicaparcial1.clientes;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ar.edu.unahur.obj2.practicaparcial1.Criterios.ComeTutti;
-import ar.edu.unahur.obj2.practicaparcial1.Criterios.CriterioPref;
 import ar.edu.unahur.obj2.practicaparcial1.Recetas.Receta;
+import ar.edu.unahur.obj2.practicaparcial1.clientes.Criterios.ComeTutti;
+import ar.edu.unahur.obj2.practicaparcial1.clientes.Criterios.CriterioPref;
 
 public class Cliente {
     private String dni;
@@ -39,5 +39,9 @@ public class Cliente {
 
     public void recibirReceta(Receta unarReceta) {
         this.recetasRecibidas.add(unarReceta);
+    }
+
+    public Receta personalizarReceta(Receta unaReceta) {
+        return criterio.personalizar(unaReceta);
     }
 }
